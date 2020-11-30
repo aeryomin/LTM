@@ -6,5 +6,5 @@
 
 * LTM has Responsive Design and is made under inspiration of Mobile First design philosophy
 
-* LTM has with PWA features
+* LTM has PWA features
 

@@ -1,0 +1,149 @@
+{
+  "header": {
+    "logo": "LTM",
+    "user": "Пользователь:",
+    "GroupSelector": "Группа",
+    "Filter": {
+      "name": {
+        "all": "Все",
+        "new": "Новая",
+        "active": "В процессе",
+        "hold": "Остановлена",
+        "done": "Выполнено"
+      },
+      "altName": {
+        "all": "Все",
+        "new": "Нов.",
+        "active": "В проц.",
+        "hold": "Ост.",
+        "done": "Вып."
+      }
+    },
+    "Sort": {
+      "name": {
+        "expDate": "Дата окончания",
+        "taskName": "Название задачи",
+        "creactionDate": "Дата создания"
+      },
+      "altName": {
+        "expDate": "Оконч.",
+        "taskName": "Назв.",
+        "creactionDate": "Созд."
+      }
+    },
+    "Menu": {
+      "Groups": {
+        "itemName": "Группы",
+        "GroupList": {
+          "GroupListTitle": {
+            "title": "Созданные мной группы:"
+          },
+          "SelectGroupButton": {
+            "created": "Создана"
+          },
+          "RemoveGroupButton": {
+            "content": "Удалить группу"
+          },
+          "CreateGroupButton": {
+            "content": "Создать группу"
+          }
+        },
+        "CreatGroup": {
+          "Input": {
+            "label": "Название группы"
+          },
+          "Button": {
+            "content": "Создать"
+          }
+        },
+        "UserListForActiveGroup": {
+          "UserListTitle": {
+            "title": "Пользователи в группе"
+          },
+          "RemoveUserButton": {
+            "content": "Удалить"
+          },
+          "AddUserButton": {
+            "content": "Добавить пользователя"
+          }
+        },
+        "FindUser": {
+          "title": "Добавить в группу",
+          "Input": {
+            "label": "e-mail пользователя"
+          },
+          "Button": {
+            "content": "Найти"
+          },
+          "users": "Пользователи",
+          "AddUserButton": {
+            "content": "Добавить"
+          }
+        }
+      },
+      "Tasks": "Задачи",
+      "language": "Переключить язык",
+      "Profile": {
+        "itemName": "Профиль",
+        "ProfileDashboard": {
+          "login": "Логин",
+          "fullname": "Полное имя",
+          "createdAt": "Создан"
+        }
+      },
+      "contacts": "Контакты",
+      "logOut": "Выход"
+    }
+  },
+  "task": {
+    "taskButtonAction": {
+      "done": "вып.",
+      "accept": "начать",
+      "edit": "ред.",
+      "delete": "удалить",
+      "hold": "пауза"
+    },
+    "status": {
+      "new": "новая",
+      "done": "выполнено",
+      "hold": "остановлена",
+      "active": "в процессе"
+    },
+    "created": "Создана: "
+  },
+  "footer": {
+    "buttonNewTaskContent": "Новая задача"
+  },
+  "formNewTask": {
+    "dropdown": {
+      "user": "...Пользователь",
+      "whom": "Кому"
+    },
+    "inputTitle": {
+      "label": "Заголовок"
+    },
+    "inputContent": {
+      "label": "Содержание"
+    },
+    "buttonFormAction": {
+      "create": "Создать задачу",
+      "update": "Обновить задачу",
+      "cancel": "Отмена"
+    }
+  },
+  "LogRegForm": {
+    "title": "Добро пожаловать в LTM",
+    "username": {
+      "label": "Имя пользователя"
+    },
+    "password": {
+      "label": "Пароль",
+      "paragraph": "Введите пароль"
+    },
+    "button": {
+      "login": "Войти",
+      "registration": "Регистрация",
+      "cancel": "Отмена"
+    }
+  }
+}

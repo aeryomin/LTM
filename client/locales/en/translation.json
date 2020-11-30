@@ -1,0 +1,149 @@
+{
+  "header": {
+    "logo": "LTM",
+    "user": "User:",
+    "GroupSelector": "Group",
+    "Filter": {
+      "name": {
+        "all": "All",
+        "new": "New",
+        "active": "Active",
+        "hold": "Hold",
+        "done": "Done"
+      },
+      "altName": {
+        "all": "All",
+        "new": "New",
+        "active": "Active",
+        "hold": "Hold",
+        "done": "Done"
+      }
+    },
+    "Sort": {
+      "name": {
+        "expDate": "Date of expiration",
+        "taskName": "Task name",
+        "creactionDate": "Date of creation"
+      },
+      "altName": {
+        "expDate": "expDate",
+        "taskName": "name",
+        "creactionDate": "crDate"
+      }
+    },
+    "Menu": {
+      "Groups": {
+        "itemName": "Groups",
+        "GroupList": {
+          "GroupListTitle": {
+            "title": "Groups created by me:"
+          },
+          "SelectGroupButton": {
+            "created": "Created"
+          },
+          "RemoveGroupButton": {
+            "content": "Remove group"
+          },
+          "CreateGroupButton": {
+            "content": "Create group"
+          }
+        },
+        "CreatGroup": {
+          "Input": {
+            "label": "Input group name"
+          },
+          "Button": {
+            "content": "Create"
+          }
+        },
+        "UserListForActiveGroup": {
+          "UserListTitle": {
+            "title": "Users in group"
+          },
+          "RemoveUserButton": {
+            "content": "Remove"
+          },
+          "AddUserButton": {
+            "content": "Add user"
+          }
+        },
+        "FindUser": {
+          "title": "Add user to group",
+          "Input": {
+            "label": "User e-mail"
+          },
+          "Button": {
+            "content": "Find user"
+          },
+          "users": "Users",
+          "AddUserButton": {
+            "content": "Add"
+          }
+        }
+      },
+      "Profile": {
+        "itemName": "Profile",
+        "ProfileDashboard": {
+          "login": "Login",
+          "fullname": "Full Name",
+          "createdAt": "Created at"
+        }
+      },
+      "Tasks": "Tasks",
+      "language": "Change language",
+      "contacts": "Contacts",
+      "logOut": "Log out"
+    }
+  },
+  "task": {
+    "taskButtonAction": {
+        "done": "done",
+        "accept": "accept",
+        "edit": "edit",
+        "delete": "delete",
+        "hold": "hold"
+    },
+    "status": {
+      "new": "new",
+      "done": "done",
+      "hold": "hold",
+      "active": "active"
+    },
+    "created": "Created by: "
+  },
+  "footer": {
+    "buttonNewTaskContent": "New task"
+  },
+  "formNewTask": {
+    "dropdown": {
+      "user": "...User",
+      "whom": "To whom"
+    },
+    "inputTitle": {
+      "label": "Task title"
+    },
+    "inputContent": {
+      "label": "Content"
+    },
+    "buttonFormAction": {
+      "update": "Update task",
+      "create": "Create task",
+      "cancel": "Cancel"
+    }
+  },
+  "LogRegForm": {
+    "title": "Welcome to LTM",
+    "username": {
+      "label": "Username"
+    },
+    "password": {
+      "label": "Password",
+      "paragraph": "Please choose a password"
+    },
+    "button": {
+      "login": "Sign In",
+      "registration": "Registration",
+      "cancel": "Cancel"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import PropTypes from 'prop-types'
+import { trySignIn } from '../redux/reducers/auth'
+// import checkSW from '../install-sw'
+
+const Startup = (props) => {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(trySignIn())
+  }, [])
+  // checkSW()
+
+  return props.children
+}
+
+Startup.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired
+}
+
+export default Startup

@@ -144,6 +144,7 @@ server.get('/*', (req, res) => {
 const app = server.listen(port)
 
 if (config.isSocketsEnabled) {
+  console.log('ws pre')
   const echo = sockjs.createServer()
   echo.on('connection', (conn) => {
     connections.push(conn)

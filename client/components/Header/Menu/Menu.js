@@ -24,7 +24,7 @@ const Menu = (props) => {
     >
       <ul
         className={`h-1/3 flex flex-col justify-between divide-y divide-gray-400 text-gray-800 md:text-gray-200 md:w-full md:flex-row md:justify-evenly md:items-center md:space-x-4 md:space-y-0 md:divide-y-0
-        md:${ui.header.menu.md.bgColor}`}
+        md:bg-gray-700`}
       >
         {(history.location.pathname === '/groups' || history.location.pathname === '/profile') && (
           <li className="p-4 md:p-0">

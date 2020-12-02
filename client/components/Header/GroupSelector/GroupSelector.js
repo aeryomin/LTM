@@ -11,7 +11,19 @@ const GroupSelector = (props) => {
   const { t } = useTranslation()
   const { groupList, activeGroupID } = useSelector((s) => s.groups)
   const [selectedGroup, setSelectedGroup] = useState(
-    activeGroupID === '' ? '' : groupList.find((group) => group._id === activeGroupID).name
+    (() => {
+      if (activeGroupID === '' || groupList.length === 0) {
+        return ''
+      }
+      console.log('typeof', typeof groupList.find((group) => group._id === activeGroupID))
+      if (typeof groupList.find((group) => group._id === activeGroupID) === 'undefined') {
+        console.log(groupList.find((group) => group._id === activeGroupID))
+        return ''
+      }
+      return groupList.find((group) => group._id === activeGroupID).name
+    })()
+
+    // activeGroupID === '' ? '' : groupList.find((group) => group._id === activeGroupID).name
   )
   const [isDropdownShown, setIsDropdownShown] = useState(false)
   const wrapperRef = useRef(null)

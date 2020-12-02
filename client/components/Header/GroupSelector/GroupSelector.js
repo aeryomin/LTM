@@ -15,15 +15,11 @@ const GroupSelector = (props) => {
       if (activeGroupID === '' || groupList.length === 0) {
         return ''
       }
-      console.log('typeof', typeof groupList.find((group) => group._id === activeGroupID))
       if (typeof groupList.find((group) => group._id === activeGroupID) === 'undefined') {
-        console.log(groupList.find((group) => group._id === activeGroupID))
         return ''
       }
       return groupList.find((group) => group._id === activeGroupID).name
     })()
-
-    // activeGroupID === '' ? '' : groupList.find((group) => group._id === activeGroupID).name
   )
   const [isDropdownShown, setIsDropdownShown] = useState(false)
   const wrapperRef = useRef(null)

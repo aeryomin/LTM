@@ -15,10 +15,10 @@ const AddUserButton = (props) => {
   })
 
   return (
-    <div className="flex justify-center items-center w-1/4 border border-gray-400 rounded-md">
+    <div className="w-1/4">
       <button
         ref={ref}
-        className={`w-full h-full px-1
+        className={`w-full h-full px-1 flex justify-center items-center border border-gray-400 rounded-md
                   ${ui.groups.AddButton.active.fontColor}
                   ${ui.groups.AddButton.active.fontSize}
                   hover:${ui.groups.AddButton.hover.fontColor}

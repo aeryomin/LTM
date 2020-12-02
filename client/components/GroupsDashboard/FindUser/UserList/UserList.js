@@ -11,7 +11,7 @@ const UserList = (props) => {
     <div className="flex flex-col max-h-full">
       {users.map((user) => {
         return (
-          <div className="mx-2 mb-2 flex justify-between" key={user._id}>
+          <div className="mx-2 mb-2 flex justify-between items-stretch" key={user._id}>
             <SelectUserButton user={user} setSelectedUser={setSelectedUser} />
             {user._id === selectedUser._id && (
               <AddUserButton user={user} setIsFindUserShow={props.setIsFindUserShow} />

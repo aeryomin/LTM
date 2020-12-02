@@ -8,15 +8,15 @@ const Status = (props) => {
 
   return (
     <div
-      className={`my-auto ${getFieldData(task.status, 'status', 'fontSize')} ${getFieldData(
-        task.status,
-        'content',
-        'fontColor'
-      )} ${getFieldData(task.status, 'status', 'fontTransform')} ${getFieldData(
+      className={`my-auto whitespace-nowrap	 ${getFieldData(
         task.status,
         'status',
-        'fontColor'
-      )}`}
+        'fontSize'
+      )} ${getFieldData(task.status, 'content', 'fontColor')} ${getFieldData(
+        task.status,
+        'status',
+        'fontTransform'
+      )} ${getFieldData(task.status, 'status', 'fontColor')}`}
     >
       {(() => {
         switch (task.status) {

@@ -18,7 +18,7 @@ const LogRegForm = (props) => {
   const { t } = useTranslation()
 
   return (
-    <div className="w-screen h-screen bg-custom-login-3 bg-cover">
+    <div className="w-screen h-screen bg-custom-login bg-cover">
       <Header />
       <div className="relative w-auto h-custom-95vh flex justify-center">
         <div className=" w-full flex flex-col justify-start">

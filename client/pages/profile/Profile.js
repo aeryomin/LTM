@@ -9,7 +9,7 @@ const Profile = () => {
   const { user } = useSelector((s) => s.auth)
 
   return (
-    <div className="relative w-screen h-screen bg-custom-groups bg-cover md:max-w-screen-md md:mx-auto">
+    <div className="relative w-screen h-screen bg-custom-groups-profile bg-cover md:max-w-screen-md md:mx-auto">
       <Header name={user.username} />
       <ProfileDashboard />
     </div>

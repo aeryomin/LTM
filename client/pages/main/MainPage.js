@@ -12,7 +12,7 @@ const MainPage = () => {
   const { isFormShown } = useSelector((s) => s.form)
 
   return (
-    <div className="relative w-screen h-screen bg-custom-main-page-4 bg-cover flex flex-col divide-y md:max-w-screen-md md:mx-auto">
+    <div className="relative w-screen h-screen bg-custom-main-page bg-cover flex flex-col divide-y md:max-w-screen-md md:mx-auto">
       <Header />
       <TaskList />
       <Footer />

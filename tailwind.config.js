@@ -36,9 +36,9 @@ module.exports = {
         '1/2': '50%'
       },
       backgroundImage: {
-        'custom-main-page-4': "url('../images/Sea.jpg')",
-        'custom-groups': "url('../images/galaxy.jpg')",
-        'custom-login-3': "url('../images/BodyOfWater.jpg')"
+        'custom-main-page': "url('../images/main-page.jpg')",
+        'custom-groups-profile': "url('../images/groups-profile.jpg')",
+        'custom-login': "url('../images/login.jpg')"
       }
     }
   },

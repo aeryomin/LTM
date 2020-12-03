@@ -1,6 +1,13 @@
 {
-  "name": "LTM.com",
-  "short_name": "SC",
+  "name": "Lightweight Task Manager",
+  "short_name": "LTM",
+  "icons": [
+    {
+      "src": "imagesicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ],
   "theme_color": "#8bd8bd",
   "background_color": "#243665",
   "display": "browser",

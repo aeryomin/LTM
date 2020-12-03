@@ -33,18 +33,18 @@ self.addEventListener('activate', (event) => {
   )
 })
 
-self.addEventListener('fetch', (event) => {
-  // const { request } = event
-  // const url = new URL(request.url)
-  // console.log('Request to server', request)
-  // console.log('request: ', request)
-  // console.log('url:', url)
-  event.respondWith(
-    caches.match(event.request).then((response) => {
-      if (response) {
-        return response
-      }
-      return fetch(event.request)
-    })
-  )
-})
+// self.addEventListener('fetch', (event) => {
+//   // const { request } = event
+//   // const url = new URL(request.url)
+//   // console.log('Request to server', request)
+//   // console.log('request: ', request)
+//   // console.log('url:', url)
+//   event.respondWith(
+//     caches.match(event.request).then((response) => {
+//       if (response) {
+//         return response
+//       }
+//       return fetch(event.request)
+//     })
+//   )
+// })

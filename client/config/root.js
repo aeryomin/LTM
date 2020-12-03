@@ -8,6 +8,7 @@ import { Switch, Route, Redirect, StaticRouter } from 'react-router-dom'
 
 import store, { history } from '../redux'
 
+import Home from '../components/Home'
 import LoginForm from '../pages/login/LoginForm'
 import RegForm from '../pages/registration/RegForm'
 import MainPage from '../pages/main/MainPage'
@@ -78,6 +79,7 @@ const RootComponent = (props) => {
       <RouterSelector history={history} location={props.location} context={props.context}>
         <Startup>
           <Switch>
+            <Route exact path="/" component={() => <Home />} />
             <Route exact path="/login" component={() => <LoginForm />} />
             <Route exact path="/reg" component={() => <RegForm />} />
             <Route exact path="/groups" component={() => <Groups />} />

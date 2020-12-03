@@ -1,6 +1,6 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-console */
-const version = '2'
+const version = '1'
 const CACHE_NAME = `cache-v${version}`
 const urlsToCache = [
   '/',
@@ -15,7 +15,7 @@ self.addEventListener('install', (event) => {
   console.log('SW is installed')
   event
     .waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(urlsToCache)))
-    .then(self.skipWaiting())
+    // .then(self.skipWaiting())
 })
 
 self.addEventListener('activate', (event) => {
@@ -45,15 +45,36 @@ self.addEventListener('fetch', (event) => {
   // console.log('Request to server', request)
   // console.log('request: ', request)
   // console.log('url:', url)
-  event.respondWith(
-    fetch(event.request).catch(() => {
-      return caches.match(event.request)
-    })
-    // caches.match(event.request).then((response) => {
-    //   if (response) {
-    //     return response
-    //   }
-    //   return fetch(event.request)
-    // })
-  )
+  if (
+    event.request.url.startsWith(self.location.origin) &&
+    event.request.method.toUpperCase() === 'GET' &&
+    event.request.url.indexOf('install_sw') < 0
+  ) {
+    event.respondWith(
+    caches
+      .match(event.request)
+      .then((response) => {
+        return response || fetch(event.request)
+      })
+      .catch(() => {
+        return caches.match('/offline')
+      })
+  )}
+  // Generic fallback
+
+
+  // Network falling back to cache
+  // event.respondWith(
+  //   fetch(event.request).catch(() => {
+  //     return caches.match(event.request)
+  //   })
+
+  // Cache falling back to network
+  // caches.match(event.request).then((response) => {
+  //   if (response) {
+  //     return response
+  //   }
+  //   return fetch(event.request)
+  // })
+  // )
 })

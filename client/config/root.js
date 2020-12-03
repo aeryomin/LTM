@@ -14,6 +14,7 @@ import RegForm from '../pages/registration/RegForm'
 import MainPage from '../pages/main/MainPage'
 import Groups from '../pages/groups/Groups'
 import Profile from '../pages/profile/Profile'
+import Offline from '../components/Offline'
 import NotFound from '../components/404'
 
 import Startup from './startup'
@@ -84,6 +85,7 @@ const RootComponent = (props) => {
             <Route exact path="/reg" component={() => <RegForm />} />
             <Route exact path="/groups" component={() => <Groups />} />
             <Route exact path="/profile" component={() => <Profile />} />
+            <Route exact path="/offline" component={() => <Offline />} />
             <PrivateRoute exact path="/main-page" component={() => <MainPage />} />
             <OnlyAnonymousRoute exact path="/login" component={() => <LoginForm />} />
             <Route component={() => <NotFound />} />

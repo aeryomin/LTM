@@ -2,8 +2,14 @@
 /* eslint-disable no-console */
 const version = '2'
 const CACHE_NAME = `cache-v${version}`
-// const urlsToCache = ['/js/main.bundle.js', '/css/main.css', '/']
-const urlsToCache = ['/images/login.jpg', '/images/main-page.jpg', '/images/groups-profile.jpg']
+const urlsToCache = [
+  '/',
+  '/js/main.bundle.js',
+  '/css/main.css',
+  '/images/login.jpg',
+  '/images/main-page.jpg',
+  '/images/groups-profile.jpg'
+]
 
 self.addEventListener('install', (event) => {
   console.log('SW is installed')
@@ -33,18 +39,21 @@ self.addEventListener('activate', (event) => {
   )
 })
 
-// self.addEventListener('fetch', (event) => {
-//   // const { request } = event
-//   // const url = new URL(request.url)
-//   // console.log('Request to server', request)
-//   // console.log('request: ', request)
-//   // console.log('url:', url)
-//   event.respondWith(
-//     caches.match(event.request).then((response) => {
-//       if (response) {
-//         return response
-//       }
-//       return fetch(event.request)
-//     })
-//   )
-// })
+self.addEventListener('fetch', (event) => {
+  // const { request } = event
+  // const url = new URL(request.url)
+  // console.log('Request to server', request)
+  // console.log('request: ', request)
+  // console.log('url:', url)
+  event.respondWith(
+    fetch(event.request).catch(() => {
+      return caches.match(event.request)
+    })
+    // caches.match(event.request).then((response) => {
+    //   if (response) {
+    //     return response
+    //   }
+    //   return fetch(event.request)
+    // })
+  )
+})

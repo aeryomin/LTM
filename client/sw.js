@@ -13,9 +13,8 @@ const urlsToCache = [
 
 self.addEventListener('install', (event) => {
   console.log('SW is installed')
-  event
-    .waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(urlsToCache)))
-    // .then(self.skipWaiting())
+  event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(urlsToCache)))
+  // .then(self.skipWaiting())
 })
 
 self.addEventListener('activate', (event) => {
@@ -40,28 +39,29 @@ self.addEventListener('activate', (event) => {
 })
 
 self.addEventListener('fetch', (event) => {
-  // const { request } = event
-  // const url = new URL(request.url)
-  // console.log('Request to server', request)
-  // console.log('request: ', request)
-  // console.log('url:', url)
+  const { request } = event
+  const url = new URL(request.url)
+  console.log('Request to server', request)
+  console.log('request: ', request)
+  console.log('url:', url)
+  console.log('self.location.origin', self.location.origin)
   if (
     event.request.url.startsWith(self.location.origin) &&
     event.request.method.toUpperCase() === 'GET' &&
     event.request.url.indexOf('install_sw') < 0
   ) {
+    // Generic fallback
     event.respondWith(
-    caches
-      .match(event.request)
-      .then((response) => {
-        return response || fetch(event.request)
-      })
-      .catch(() => {
-        return caches.match('/offline')
-      })
-  )}
-  // Generic fallback
-
+      caches
+        .match(event.request)
+        .then((response) => {
+          return response || fetch(event.request)
+        })
+        .catch(() => {
+          return caches.match('/offline')
+        })
+    )
+  }
 
   // Network falling back to cache
   // event.respondWith(

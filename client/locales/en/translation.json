@@ -129,6 +129,17 @@
       "update": "Update task",
       "create": "Create task",
       "cancel": "Cancel"
+    },
+    "InputExpirationData": {
+      "openCalendarButton": {
+        "content": "Set expiration date"
+      },
+      "setDateButton": {
+        "content": "Set date"
+      },
+      "cancelButton": {
+        "content": "Cancel"
+      }
     }
   },
   "LogRegForm": {

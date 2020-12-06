@@ -129,6 +129,17 @@
       "create": "Создать задачу",
       "update": "Обновить задачу",
       "cancel": "Отмена"
+    },
+    "InputExpirationData": {
+      "openCalendarButton": {
+        "content": "Дата окончания"
+      },
+      "setDateButton": {
+        "content": "Установить дату"
+      },
+      "cancelButton": {
+        "content": "Отмена"
+      }
     }
   },
   "LogRegForm": {

@@ -2,11 +2,13 @@
 import React, { useState, useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import Calendar from 'react-calendar'
+import { useTranslation } from 'react-i18next'
 import { setExpirationDate } from '../../redux/reducers/form'
 import useOutsideAlerter from '../addons/hooks'
 import 'react-calendar/dist/Calendar.css'
 
 const InputExpirationData = () => {
+  const { t } = useTranslation()
   const dispatch = useDispatch()
   const [date, setDate] = useState(new Date())
   const [isCalendarShown, setIsCalendarShown] = useState(false)
@@ -29,7 +31,7 @@ const InputExpirationData = () => {
         onClick={onClick}
         className="mx-auto border border-white rounded hover:bg-gray-700 px-4 py-2 mb-2 text-sm"
       >
-        Set expiration date
+        {t('formNewTask.InputExpirationData.openCalendarButton.content')}
       </button>
       {isCalendarShown && (
         <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-75 z-30">
@@ -47,7 +49,7 @@ const InputExpirationData = () => {
                 }}
                 className="text-gray-200 px-4 py-2 border border-gray-200 rounded hover:bg-gray-700"
               >
-                Set date
+                {t('formNewTask.InputExpirationData.setDateButton.content')}
               </button>
               <button
                 type="button"
@@ -57,7 +59,7 @@ const InputExpirationData = () => {
                 }}
                 className="text-gray-200 px-4 py-2 border border-gray-200 rounded hover:bg-gray-700"
               >
-                Cancel
+                {t('formNewTask.InputExpirationData.cancelButton.content')}
               </button>
             </div>
           </div>

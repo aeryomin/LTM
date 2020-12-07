@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import Cookies from 'universal-cookie'
-import { history } from '../index'
+import store, { history } from '../index'
 
 const UPDATE_USERNAME = 'UPDATE_USERNAME'
 const UPDATE_EMAIL = 'UPDATE_EMAIL'
@@ -8,6 +8,8 @@ const UPDATE_PASSWORD = 'UPDATE_PASSWORD'
 const LOGIN = 'LOGIN'
 const REGISTRATION = 'REGISTRATION'
 const GET_USER = 'GET_USER'
+const SET_EMAIL_VALID_COLOR = 'SET_EMAIL_VALID_COLOR'
+const SET_IS_EMAIL_VALID = 'SET_IS_EMAIL_VALID'
 
 const cookies = new Cookies()
 
@@ -16,7 +18,9 @@ const initialState = {
   email: '',
   password: '',
   token: cookies.get('token'),
-  user: {}
+  user: {},
+  emailValidColor: 'gray',
+  isEmailValid: false
 }
 
 export default (state = initialState, action) => {
@@ -38,6 +42,12 @@ export default (state = initialState, action) => {
     }
     case GET_USER: {
       return { ...state, user: action.user }
+    }
+    case SET_EMAIL_VALID_COLOR: {
+      return { ...state, emailValidColor: action.emailValidColor }
+    }
+    case SET_IS_EMAIL_VALID: {
+      return { ...state, isEmailValid: action.isEmailValid }
     }
 
     default:
@@ -67,25 +77,42 @@ export function updatePasswordField(password) {
   return { type: UPDATE_PASSWORD, password }
 }
 
+export function testIsEmailValid(email) {
+  const reg = /^([A-z0-9._+-]+)@([A-z0-9_+-]+)\.([A-z]{2,})/
+  if (email === '' || !reg.test(email)) {
+    console.log(reg.test(email))
+    return { type: SET_IS_EMAIL_VALID, isEmailValid: false }
+  }
+  return { type: SET_IS_EMAIL_VALID, isEmailValid: true }
+}
+
+export function setEmailValidColor() {
+  const { isEmailValid } = store.getState().auth
+  if (isEmailValid) return { type: SET_EMAIL_VALID_COLOR, emailValidColor: 'green' }
+  return { type: SET_EMAIL_VALID_COLOR, emailValidColor: 'red' }
+}
+
 export function registrateUser() {
   return (dispatch, getState) => {
-    const { username, email, password } = getState().auth
-    fetch('/api/v1/registration', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        username,
-        email,
-        password
+    const { username, email, password, isEmailValid } = getState().auth
+    if (isEmailValid) {
+      fetch('/api/v1/registration', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username,
+          email,
+          password
+        })
       })
-    })
-      .then((r) => r.json())
-      .then(() => {
-        dispatch({ type: REGISTRATION })
-        history.push('/login')
-      })
+        .then((r) => r.json())
+        .then(() => {
+          dispatch({ type: REGISTRATION })
+          history.push('/login')
+        })
+    }
   }
 }
 

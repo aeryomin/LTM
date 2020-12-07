@@ -7,14 +7,16 @@ import {
   updateEmailField,
   updatePasswordField,
   signIn,
-  registrateUser
+  registrateUser,
+  testIsEmailValid,
+  setEmailValidColor
 } from '../redux/reducers/auth'
 import Header from './Header/Header'
 import { history } from '../redux'
 
 const LogRegForm = (props) => {
   const dispatch = useDispatch()
-  const { username, email, password } = useSelector((s) => s.auth)
+  const { username, email, password, emailValidColor, isEmailValid } = useSelector((s) => s.auth)
   const { t } = useTranslation()
 
   return (
@@ -47,15 +49,31 @@ const LogRegForm = (props) => {
                   E-mail
                 </label>
                 <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  className={`shadow appearance-none border border-${emailValidColor}-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline`}
                   id="email"
                   type="email"
                   placeholder="user@mail.com"
                   value={email}
                   onChange={(e) => {
                     dispatch(updateEmailField(e.target.value))
+                    dispatch(testIsEmailValid(e.target.value))
+                    dispatch(setEmailValidColor())
                   }}
                 />
+                {(() => {
+                  if (isEmailValid) {
+                    return (
+                      <div className={`pt-2 text-${emailValidColor}-600 text-xs italic`}>
+                        Email is OK
+                      </div>
+                    )
+                  }
+                  return (
+                    <div className={`pt-2 text-${emailValidColor}-500 text-xs italic`}>
+                      Email is Wrong
+                    </div>
+                  )
+                })()}
               </div>
             )}
             <div className="mb-6">
@@ -72,7 +90,9 @@ const LogRegForm = (props) => {
                   dispatch(updatePasswordField(e.target.value))
                 }}
               />
-              <p className="text-red-500 text-xs italic">{t('LogRegForm.password.paragraph')}</p>
+              {password === '' && (
+                <p className="text-red-500 text-xs italic">{t('LogRegForm.password.paragraph')}</p>
+              )}
             </div>
 
             <div className="">
@@ -109,7 +129,7 @@ const LogRegForm = (props) => {
                           className="border border-white hover:bg-gray-600 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                           type="button"
                           onClick={() => {
-                            dispatch(registrateUser())
+                            registrateUser()
                           }}
                         >
                           {t('LogRegForm.button.registration')}

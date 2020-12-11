@@ -1,10 +1,18 @@
 /* eslint-disable no-console */
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import getFieldData from '../../../addons/getFieldData'
 
 const Expire = (props) => {
+  const { t } = useTranslation()
   const { task } = props
   const exp = new Date(task.expiredAt) > new Date() ? 'notExpired' : 'expired'
+  const formatDate = (date) => {
+    if (String(date).length < 2) {
+      return '0'.concat(String(date))
+    }
+    return date
+  }
 
   return (
     <div
@@ -12,10 +20,10 @@ const Expire = (props) => {
       ${getFieldData(task.status, 'Expire', exp, 'fontSize')}
       ${getFieldData(task.status, 'Expire', exp, 'fontColor')}`}
     >
-      Expired At:{' '}
-      {`${new Date(task.expiredAt).getDate()}:${new Date(task.expiredAt).getMonth()}:${new Date(
-        task.expiredAt
-      ).getFullYear()}`}
+      {t('task.expired')}:{' '}
+      {`${formatDate(new Date(task.expiredAt).getDate())}:${formatDate(
+        new Date(task.expiredAt).getMonth() + 1
+      )}:${new Date(task.expiredAt).getFullYear()}`}
     </div>
   )
 }

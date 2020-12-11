@@ -109,7 +109,8 @@
       "hold": "hold",
       "active": "active"
     },
-    "created": "Created by: "
+    "created": "Created by: ",
+    "expired": "Expired At"
   },
   "footer": {
     "buttonNewTaskContent": "New task"

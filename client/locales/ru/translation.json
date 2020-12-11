@@ -109,7 +109,8 @@
       "hold": "остановлена",
       "active": "в процессе"
     },
-    "created": "Создана: "
+    "created": "Создана: ",
+    "expired": "Окончание"
   },
   "footer": {
     "buttonNewTaskContent": "Новая задача"

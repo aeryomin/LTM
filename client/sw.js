@@ -39,12 +39,12 @@ self.addEventListener('activate', (event) => {
 })
 
 self.addEventListener('fetch', (event) => {
-  const { request } = event
-  const url = new URL(request.url)
-  console.log('Request to server', request)
-  console.log('request: ', request)
-  console.log('url:', url)
-  console.log('self.location.origin', self.location.origin)
+  // const { request } = event
+  // const url = new URL(request.url)
+  // console.log('Request to server', request)
+  // console.log('request: ', request)
+  // console.log('url:', url)
+  // console.log('self.location.origin', self.location.origin)
   if (
     event.request.url.startsWith(self.location.origin) &&
     event.request.method.toUpperCase() === 'GET' &&

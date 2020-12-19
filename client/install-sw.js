@@ -4,6 +4,7 @@
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     const currentWorkerUrl = '/sw.js'
+    // const currentWorkerUrl = '/firebase-messaging-sw.js'
 
     navigator.serviceWorker.getRegistrations().then((registrations) => {
       for (const registration of registrations) {
@@ -23,3 +24,16 @@ if ('serviceWorker' in navigator) {
     })
   })
 }
+
+// if ('serviceWorker' in navigator) {
+//   navigator.serviceWorker
+//     .register('/firebase-messaging-sw.js')
+//     .then((registration) => {
+//       // eslint-disable-next-line no-console
+//       console.log('[SW]: SCOPE: ', registration.scope)
+//       return registration.scope
+//     })
+//     .catch((err) => {
+//       return err
+//     })
+// }

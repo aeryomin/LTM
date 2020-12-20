@@ -143,7 +143,7 @@ export function trySignIn() {
       .then((r) => r.json())
       .then((data) => {
         dispatch({ type: LOGIN, token: data.token, user: data.user })
-        history.push('/main-page')
+        // history.push('/main-page')
       })
   }
 }
@@ -155,5 +155,15 @@ export function updateUser(userID, field, data) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({ field, data })
+  })
+}
+
+export function sendTokenToServer(userID, currentToken) {
+  return fetch(`/api/v2/user/${userID}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ currentToken })
   })
 }

@@ -219,7 +219,7 @@ const config = {
               return content.toString().replace(/APP_VERSION/g, version)
             }
           },
-          { from: `${__dirname}/client/init-fcm.js`, to: 'js/init-fcm.js' },
+          // { from: `${__dirname}/client/init-fcm.js`, to: 'js/init-fcm.js' },
           { from: `${__dirname}/client/firebase-messaging-sw.js`, to: 'firebase-messaging-sw.js' }
         ]
       },

@@ -6,6 +6,10 @@ import { Provider, useSelector } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 import { Switch, Route, Redirect, StaticRouter } from 'react-router-dom'
 
+// import firebase from 'firebase/app'
+// import 'firebase/messaging'
+// import { sendTokenToServer } from '../redux/reducers/auth'
+
 import store, { history } from '../redux'
 
 import Home from '../components/Home'
@@ -18,6 +22,7 @@ import Offline from '../components/Offline'
 import NotFound from '../components/404'
 
 import Startup from './startup'
+import FirebaseInit from './firebase-init'
 
 const OnlyAnonymousRoute = ({ component: Component, ...rest }) => {
   const auth = useSelector((s) => s.auth)
@@ -79,17 +84,19 @@ const RootComponent = (props) => {
     <Provider store={store}>
       <RouterSelector history={history} location={props.location} context={props.context}>
         <Startup>
-          <Switch>
-            <Route exact path="/" component={() => <Home />} />
-            <Route exact path="/login" component={() => <LoginForm />} />
-            <Route exact path="/reg" component={() => <RegForm />} />
-            <Route exact path="/groups" component={() => <Groups />} />
-            <Route exact path="/profile" component={() => <Profile />} />
-            <Route exact path="/offline" component={() => <Offline />} />
-            <PrivateRoute exact path="/main-page" component={() => <MainPage />} />
-            <OnlyAnonymousRoute exact path="/login" component={() => <LoginForm />} />
-            <Route component={() => <NotFound />} />
-          </Switch>
+          <FirebaseInit>
+            <Switch>
+              <Route exact path="/" component={() => <Home />} />
+              <Route exact path="/login" component={() => <LoginForm />} />
+              <Route exact path="/reg" component={() => <RegForm />} />
+              <Route exact path="/groups" component={() => <Groups />} />
+              <Route exact path="/profile" component={() => <Profile />} />
+              <Route exact path="/offline" component={() => <Offline />} />
+              <PrivateRoute exact path="/main-page" component={() => <MainPage />} />
+              <OnlyAnonymousRoute exact path="/login" component={() => <LoginForm />} />
+              <Route component={() => <NotFound />} />
+            </Switch>
+          </FirebaseInit>
         </Startup>
       </RouterSelector>
     </Provider>

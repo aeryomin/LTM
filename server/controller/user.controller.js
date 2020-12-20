@@ -18,3 +18,14 @@ export async function getAll(req, res) {
     res.json({ status: 'error', err })
   }
 }
+
+export async function addDeviceToken(req, res) {
+  try {
+    const user = await User.findOne({ _id: req.params.id })
+    user.deviceToken = req.body.currentToken
+    user.save()
+    res.json({ status: 'ok', user })
+  } catch (err) {
+    res.json({ status: 'updata error', err })
+  }
+}

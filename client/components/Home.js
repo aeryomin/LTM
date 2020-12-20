@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import LoginForm from '../pages/login/LoginForm'

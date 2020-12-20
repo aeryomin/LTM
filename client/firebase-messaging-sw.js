@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable no-undef */
 importScripts('https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js')
 importScripts('https://www.gstatic.com/firebasejs/8.2.0/firebase-messaging.js')
 
@@ -11,6 +13,24 @@ const firebaseConfig = {
   measurementId: 'G-2HLQRV3WHG'
 }
 
-firebase.initializeApp(firebaseConfig)
+if (!firebase.apps.length) {
+  try {
+    firebase.initializeApp(firebaseConfig)
+  } catch (err) {
+    console.error('Firebase initialization error raised', err.stack)
+  }
+}
+
+// firebase.initializeApp(firebaseConfig)
 
 const messaging = firebase.messaging()
+
+messaging.onBackgroundMessage((payload) => {
+  console.log('payload: ', payload)
+  const { title } = payload.data
+  const options = {
+    body: payload.data.status
+  }
+  // eslint-disable-next-line no-restricted-globals
+  self.registration.showNotification(title, options)
+})

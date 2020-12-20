@@ -30,7 +30,8 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: false
     },
-    groups: [String]
+    groups: [String],
+    deviceToken: String
   },
   {
     timestamps: true

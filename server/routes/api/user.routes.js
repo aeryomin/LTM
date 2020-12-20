@@ -7,7 +7,7 @@ router.get('/', userController.getAll)
 router.get('/:id', userController.getOne)
 // router.post('/', userController.create)
 // router.put('/', userController.updateField)
-// router.patch('/', userController.updateData)
+router.patch('/:id', userController.addDeviceToken)
 // router.delete('/:id', userController.del)
 
 export default router

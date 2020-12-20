@@ -143,7 +143,7 @@ export function trySignIn() {
       .then((r) => r.json())
       .then((data) => {
         dispatch({ type: LOGIN, token: data.token, user: data.user })
-        // history.push('/main-page')
+        history.push('/main-page')
       })
   }
 }

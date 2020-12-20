@@ -5,6 +5,7 @@ const router = express.Router()
 
 router.get('/', userController.getAll)
 router.get('/:id', userController.getOne)
+router.get('/notification/:id', userController.requestNotification)
 // router.post('/', userController.create)
 // router.put('/', userController.updateField)
 router.patch('/:id', userController.addDeviceToken)

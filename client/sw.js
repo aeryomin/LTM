@@ -1,11 +1,10 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-console */
-const version = '1'
+const version = '2'
 const CACHE_NAME = `cache-v${version}`
 const urlsToCache = [
-  '/',
-  '/js/main.bundle.js',
-  '/css/main.css',
+  // '/js/main.bundle.js',
+  // '/css/main.css',
   '/images/login.jpg',
   '/images/main-page.jpg',
   '/images/groups-profile.jpg'

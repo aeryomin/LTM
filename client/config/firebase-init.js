@@ -5,32 +5,33 @@ import firebase from 'firebase/app'
 import 'firebase/messaging'
 import { sendTokenToServer } from '../redux/reducers/auth'
 
+const firebaseConfig = {
+  apiKey: 'AIzaSyALi5loqMEBzR5Am8HUxGHPcD7G1pDhzDo',
+  authDomain: 'lightweight-task-manager.firebaseapp.com',
+  projectId: 'lightweight-task-manager',
+  storageBucket: 'lightweight-task-manager.appspot.com',
+  messagingSenderId: '939705651291',
+  appId: '1:939705651291:web:4541e5c08f358f09712f7e',
+  measurementId: 'G-2HLQRV3WHG'
+}
+
+// if (!firebase.apps.length) {
+//   try {
+//     firebase.initializeApp(firebaseConfig)
+//   } catch (err) {
+//     console.error('Firebase initialization error raised', err.stack)
+//   }
+// }
+
+firebase.initializeApp(firebaseConfig)
+const messaging = firebase.messaging()
+
 const FirebaseInit = (props) => {
   const auth = useSelector((s) => s.auth)
 
   useEffect(() => {
-    if (!!auth.user && !!auth.token) {
-      console.log('firebase-init', auth.user, auth.token)
-      const firebaseConfig = {
-        apiKey: 'AIzaSyALi5loqMEBzR5Am8HUxGHPcD7G1pDhzDo',
-        authDomain: 'lightweight-task-manager.firebaseapp.com',
-        projectId: 'lightweight-task-manager',
-        storageBucket: 'lightweight-task-manager.appspot.com',
-        messagingSenderId: '939705651291',
-        appId: '1:939705651291:web:4541e5c08f358f09712f7e',
-        measurementId: 'G-2HLQRV3WHG'
-      }
-
-      if (!firebase.apps.length) {
-        try {
-          firebase.initializeApp(firebaseConfig)
-        } catch (err) {
-          console.error('Firebase initialization error raised', err.stack)
-        }
-      }
-
-      const messaging = firebase.messaging()
-      console.log('messaging in MainPage: ', messaging)
+    if (Object.keys(auth.user).length !== 0 && Object.keys(auth.token).length !== 0) {
+      // console.log('firebase-init', auth.user)
 
       messaging
         .requestPermission()

@@ -49,3 +49,14 @@ export function getAuthenticatedUsers() {
 }
 
 export function getUserByEmail() {}
+
+export function sendNotification(userId) {
+  console.log('sendNotification: ', userId)
+  return () => {
+    fetch(`/api/v2/user/notification/${userId}`, { method: 'GET' })
+      .then((r) => r.json())
+      .then((data) => {
+        console.log(data)
+      })
+  }
+}

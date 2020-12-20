@@ -4,7 +4,7 @@ import * as taskController from '../../controller/task.controller'
 const router = express.Router()
 
 router.get('/', taskController.getAll)
-// router.get('/:id', taskController.getOne)
+// router.get('/:id', taskController.requestNotification)
 router.post('/', taskController.create)
 router.put('/', taskController.updateField)
 router.patch('/', taskController.updateData)

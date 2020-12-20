@@ -10,7 +10,7 @@ export async function getAll(req, res) {
   }
 }
 
-// export async function getOne(req, res) {
+// export async function requestNotification(req, res) {
 //   try {
 //     const task = await Task.findOne({ _id: req.params.id })
 //     res.json({ status: 'ok', task })

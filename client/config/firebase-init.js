@@ -4,16 +4,7 @@ import { useSelector } from 'react-redux'
 import firebase from 'firebase/app'
 import 'firebase/messaging'
 import { sendTokenToServer } from '../redux/reducers/auth'
-
-const firebaseConfig = {
-  apiKey: 'AIzaSyALi5loqMEBzR5Am8HUxGHPcD7G1pDhzDo',
-  authDomain: 'lightweight-task-manager.firebaseapp.com',
-  projectId: 'lightweight-task-manager',
-  storageBucket: 'lightweight-task-manager.appspot.com',
-  messagingSenderId: '939705651291',
-  appId: '1:939705651291:web:4541e5c08f358f09712f7e',
-  measurementId: 'G-2HLQRV3WHG'
-}
+import firebaseConfig from './firebase.config'
 
 // if (!firebase.apps.length) {
 //   try {
@@ -25,37 +16,40 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig)
 const messaging = firebase.messaging()
+// navigator.serviceWorker.register('sw.js').then((registration) => {
+//   messaging.useServiceWorker(registration)
+// })
 
 const FirebaseInit = (props) => {
   const auth = useSelector((s) => s.auth)
 
   useEffect(() => {
-    if (Object.keys(auth.user).length !== 0 && Object.keys(auth.token).length !== 0) {
-      // console.log('firebase-init', auth.user)
+    if (typeof auth.user !== 'undefined' && typeof auth.token !== 'undefined') {
+      if (Object.keys(auth.user).length !== 0 && auth.token.length !== '') {
+        messaging
+          .requestPermission()
+          .then(() => {
+            console.log('Have permission')
+            return messaging.getToken()
+          })
+          .then((currentToken) => {
+            console.log('currentToken: ', currentToken)
 
-      messaging
-        .requestPermission()
-        .then(() => {
-          console.log('Have permission')
-          return messaging.getToken()
-        })
-        .then((currentToken) => {
-          console.log('currentToken: ', currentToken)
+            if (currentToken) {
+              sendTokenToServer(auth.user._id, currentToken)
+            } else {
+              console.warn('Не удалось получить токен.')
+              // setTokenSentToServer(false)
+            }
+          })
+          .catch((err) => {
+            console.warn('An error occurred while getting the token', err)
+          })
 
-          if (currentToken) {
-            sendTokenToServer(auth.user._id, currentToken)
-          } else {
-            console.warn('Не удалось получить токен.')
-            // setTokenSentToServer(false)
-          }
+        messaging.onMessage((payload) => {
+          console.log('On message: ', payload)
         })
-        .catch((err) => {
-          console.warn('An error occurred while getting the token', err)
-        })
-
-      messaging.onMessage((payload) => {
-        console.log('On message: ', payload)
-      })
+      }
     }
   }, [auth])
 

@@ -14,14 +14,11 @@ export function sendData(taskData) {
     sendTaskDataFromForm(taskData)
       .then((res) => res.json())
       .then(() => {
-        console.log('taskData.executor', taskData.executor)
         const { authenticatedUsers } = store.getState().users
-        console.log('authenticatedUsers', authenticatedUsers)
-        const userExecutorId = authenticatedUsers.find(
-          (user) => user.username === taskData.executor
-        )._id
-        console.log('userExecutorId._id', userExecutorId)
-        sendNotification(userExecutorId)
+        const executorId = authenticatedUsers.find((user) => user.username === taskData.executor)
+          ._id
+        console.log('userExecutorId._id', executorId)
+        store.dispatch(sendNotification(executorId))
         store.dispatch(toggleDispayForm())
         store.dispatch(setOverflowYScroll(ui.tasklist.overflowYScroll))
         store.dispatch(clearTaskData())

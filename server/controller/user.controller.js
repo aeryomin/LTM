@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+import axios from 'axios'
 import User from '../model/User.model'
 
 export async function getOne(req, res) {
@@ -31,26 +32,25 @@ export async function addDeviceToken(req, res) {
 }
 
 export async function requestNotification(req, res) {
-  console.log('-->> req.params.id', req.params.id)
   try {
     const user = await User.findOne({ _id: req.params.id })
-    console.log(user.deviceToken)
-    fetch('https://fcm.googleapis.com/fcm/send', {
+    const messageBody = {
+      to: user.deviceToken,
+      notification: {
+        title: 'New Task',
+        body: 'Task name'
+      }
+    }
+    axios('https://fcm.googleapis.com/fcm/send', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization:
           'key=AAAA2srSUFs:APA91bH7LZlvxOGpBSMjlzVRhyCYa_ObcHKIOFAUR6IDWhJkSMZ91fcmbtsz8WwvyevXOYd2lN0xH4Eo85Bm7X9TRMxNo7GUy8MOVuqcHb2e1sGGInfBZeMVvf-XNl77OyQWtuJjUewq'
       },
-      body: JSON.stringify({
-        to: user.deviceToken,
-        data: {
-          title: 'New Task',
-          body: 'Task name'
-        }
-      })
+      data: messageBody
     })
-    res.json({ status: 'ok', user })
+    res.json({ status: 'ok' })
   } catch (err) {
     res.json({ status: 'error', err })
   }

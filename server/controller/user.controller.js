@@ -37,8 +37,10 @@ export async function requestNotification(req, res) {
     const messageBody = {
       to: user.deviceToken,
       notification: {
-        title: 'New Task',
-        body: 'Task name'
+        title: 'You have recieved a new task',
+        body: req.body.taskTitle,
+        icon: '/images/icons/icon-192x192.png'
+        // badge: '/images/icons/icon-96x96.png'
       }
     }
     axios('https://fcm.googleapis.com/fcm/send', {

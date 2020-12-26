@@ -17,8 +17,7 @@ export function sendData(taskData) {
         const { authenticatedUsers } = store.getState().users
         const executorId = authenticatedUsers.find((user) => user.username === taskData.executor)
           ._id
-        console.log('userExecutorId._id', executorId)
-        store.dispatch(sendNotification(executorId))
+        store.dispatch(sendNotification(executorId, taskData.title))
         store.dispatch(toggleDispayForm())
         store.dispatch(setOverflowYScroll(ui.tasklist.overflowYScroll))
         store.dispatch(clearTaskData())

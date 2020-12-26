@@ -129,7 +129,7 @@ const LogRegForm = (props) => {
                           className="border border-white hover:bg-gray-600 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                           type="button"
                           onClick={() => {
-                            registrateUser()
+                            dispatch(registrateUser())
                           }}
                         >
                           {t('LogRegForm.button.registration')}

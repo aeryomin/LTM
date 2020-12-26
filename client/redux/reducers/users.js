@@ -50,6 +50,14 @@ export function getAuthenticatedUsers() {
 
 export function getUserByEmail() {}
 
-export function sendNotification(userId) {
-  return () => fetch(`/api/v2/user/notification/${userId}`)
+export function sendNotification(userId, taskTitle) {
+  return () => {
+    fetch(`/api/v2/user/notification/${userId}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ taskTitle })
+    })
+  }
 }

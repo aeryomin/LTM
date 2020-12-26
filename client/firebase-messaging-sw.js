@@ -38,7 +38,7 @@ const messaging = firebase.messaging()
 //   self.registration.showNotification(title, options)
 // })
 
-// const version = '1'
+// const version = '2'
 // const CACHE_NAME = `cache-v${version}`
 // const urlsToCache = [
 //   // '/js/main.bundle.js',

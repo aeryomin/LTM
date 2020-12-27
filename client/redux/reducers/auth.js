@@ -96,6 +96,7 @@ export function registrateUser() {
   return (dispatch, getState) => {
     const { username, email, password, isEmailValid } = getState().auth
     if (isEmailValid) {
+      // console.log('send reg data')
       fetch('/api/v1/registration', {
         method: 'POST',
         headers: {

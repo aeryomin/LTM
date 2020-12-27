@@ -9,10 +9,10 @@ const SelectUserButton = (props) => {
     <button
       className={`flex flex-col w-4/6 space-y-1 border rounded pl-2   text-left
           ${ui.groups.SelectButton.active.bgColor}
-          ${ui.groups.SelectButton.active.FontSize}
-          ${ui.groups.SelectButton.active.FontColor}
+          ${ui.groups.SelectButton.active.fontSize}
+          ${ui.groups.SelectButton.active.fontColor}
           hover:${ui.groups.SelectButton.hover.bgColor}
-          hover:${ui.groups.SelectButton.hover.FontColor}`}
+          hover:${ui.groups.SelectButton.hover.fontColor}`}
       type="button"
       onClick={() => {
         dispatch(props.setSelectedUserID(props.user._id))

@@ -29,7 +29,7 @@ const FirebaseInit = (props) => {
         Notification.requestPermission().then((permission) => {
           if (permission === 'granted') {
             messaging.getToken().then((currentToken) => {
-              console.log('currentToken: ', currentToken)
+              // console.log('currentToken: ', currentToken)
               sendTokenToServer(auth.user._id, currentToken)
             })
           } else {
@@ -44,7 +44,6 @@ const FirebaseInit = (props) => {
         //   })
         //   .then((currentToken) => {
         //     console.log('currentToken: ', currentToken)
-
         //     if (currentToken) {
         //       sendTokenToServer(auth.user._id, currentToken)
         //     } else {
@@ -55,10 +54,31 @@ const FirebaseInit = (props) => {
         //   .catch((err) => {
         //     console.warn('An error occurred while getting the token', err)
         //   })
-
-        messaging.onMessage((payload) => {
-          console.log('On message: ', payload)
-        })
+        // messaging.onMessage((payload) => {
+        //   console.log('On message: ', payload)
+        // })
+        // messaging.onMessage((payload) => {
+        //   navigator.serviceWorker.register('/firebase-messaging-sw.js')
+        //   Notification.requestPermission((permission) => {
+        //     if (permission === 'granted') {
+        //       navigator.serviceWorker.ready
+        //         .then((registration) => {
+        //           const data = { ...payload.notification, ...payload.data }
+        //           const notificationTitle = data.title
+        //           const notificationOptions = {
+        //             body: data.body,
+        //             icon: data.icon,
+        //             requireInteraction: true,
+        //             data
+        //           }
+        //           return registration.showNotification(notificationTitle, notificationOptions)
+        //         })
+        //         .catch((error) => {
+        //           console.log('ServiceWorker registration failed', error)
+        //         })
+        //     }
+        //   })
+        // })
       }
     }
   }, [auth])

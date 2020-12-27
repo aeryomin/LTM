@@ -3,8 +3,8 @@
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    // const currentWorkerUrl = '/sw.js'
-    const currentWorkerUrl = '/firebase-messaging-sw.js'
+    const currentWorkerUrl = '/sw.js'
+    // const currentWorkerUrl = '/firebase-messaging-sw.js'
 
     navigator.serviceWorker.getRegistrations().then((registrations) => {
       for (const registration of registrations) {

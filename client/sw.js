@@ -1,6 +1,6 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-console */
-const version = '1'
+const version = '0'
 const CACHE_NAME = `cache-v${version}`
 const urlsToCache = [
   // '/js/main.bundle.js',

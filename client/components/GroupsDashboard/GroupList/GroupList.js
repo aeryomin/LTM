@@ -21,7 +21,7 @@ const GroupList = (props) => {
         {props.groupList
           .filter((group) => group.creatorID === props.currentUser._id)
           .map((group) => (
-            <div key={group._id} className="mx-1 mt-1 flex space-x-0">
+            <div key={group._id} className="flex-shrink-0 mx-1 mt-1 flex space-x-0">
               <SelectGroupButton
                 group={group}
                 activeGroupID={props.activeGroupID}

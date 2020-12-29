@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 import React, { useState, useEffect, useCallback, useRef } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import usePortal from 'react-useportal'
-import { getGrouplist, creatGroup } from '../../../redux/reducers/groups'
+import { creatGroup } from '../../../redux/reducers/groups'
 import Button from './Button'
 import Input from './Input'
 import Modal from '../../addons/modal'
@@ -13,7 +13,7 @@ const CreatGroup = (props) => {
   const { t } = useTranslation()
   const wrapperRef = useRef(null)
   const { currentUser } = props
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
   const [inputValue, setInputValue] = useState('')
   const { groupList } = useSelector((s) => s.groups)
   const { ref, openPortal, closePortal, isOpen, Portal } = usePortal({
@@ -50,7 +50,7 @@ const CreatGroup = (props) => {
 
     if (!groupNamesFromGroupList.includes(newGroupData.name)) {
       creatGroup(newGroupData)
-      dispatch(getGrouplist())
+      // dispatch(getGrouplist())
       props.setIsCreateGroupShown(false)
     } else {
       openPortal()

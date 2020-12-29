@@ -85,6 +85,8 @@ export function creatGroup(groupData) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(groupData)
+  }).then(() => {
+    getSocket().send('group is changed')
   })
 }
 

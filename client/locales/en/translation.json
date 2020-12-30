@@ -158,6 +158,12 @@
       "cancel": "Cancel"
     }
   },
+  "modal": {
+    "UserExists": "User exists",
+    "GroupNameIsExist": "Group is exist",
+    "GroupIsNotSelected": "Group is not selected",
+    "buttonContent": "Close"
+  },
   "warningModal": {
     "warningContent": "Are you sure?",
     "buttonYes": "Yes",

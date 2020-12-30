@@ -36,7 +36,7 @@ const ButtonNewTask = () => {
       </button>
       {isOpen && (
         <Portal>
-          <Modal content="Group is not selected" closePortal={closePortal} />
+          <Modal messageIndicator={t('modal.GroupIsNotSelected')} closePortal={closePortal} />
         </Portal>
       )}
     </div>

@@ -158,6 +158,12 @@
       "cancel": "Отмена"
     }
   },
+  "modal": {
+    "UserExists": "Пользователь существует",
+    "GroupNameIsExist": "Группа существует",
+    "GroupIsNotSelected": "Группа не выбрана",
+    "buttonContent": "Закрыть"
+  },
   "warningModal": {
     "warningContent": "Вы уверены?",
     "buttonYes": "Да",

@@ -40,7 +40,7 @@ const AddUserButton = (props) => {
       </button>
       {isOpen && (
         <Portal>
-          <Modal content="User exists" closePortal={closePortal} />
+          <Modal messageIndicator={t('modal.UserExists')} closePortal={closePortal} />
         </Portal>
       )}
     </div>

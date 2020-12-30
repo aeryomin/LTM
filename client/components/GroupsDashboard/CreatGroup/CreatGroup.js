@@ -81,7 +81,7 @@ const CreatGroup = (props) => {
       </div>
       {isOpen && (
         <Portal>
-          <Modal content="Group name is exist" closePortal={closePortal} />
+          <Modal messageIndicator={t('modal.GroupNameIsExist')} closePortal={closePortal} />
         </Portal>
       )}
     </div>

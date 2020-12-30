@@ -13,7 +13,6 @@ const CreatGroup = (props) => {
   const { t } = useTranslation()
   const wrapperRef = useRef(null)
   const { currentUser } = props
-  // const dispatch = useDispatch()
   const [inputValue, setInputValue] = useState('')
   const { groupList } = useSelector((s) => s.groups)
   const { ref, openPortal, closePortal, isOpen, Portal } = usePortal({
@@ -50,7 +49,6 @@ const CreatGroup = (props) => {
 
     if (!groupNamesFromGroupList.includes(newGroupData.name)) {
       creatGroup(newGroupData)
-      // dispatch(getGrouplist())
       props.setIsCreateGroupShown(false)
     } else {
       openPortal()

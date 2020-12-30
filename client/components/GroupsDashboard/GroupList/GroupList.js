@@ -21,14 +21,14 @@ const GroupList = (props) => {
         {props.groupList
           .filter((group) => group.creatorID === props.currentUser._id)
           .map((group) => (
-            <div key={group._id} className="flex-shrink-0 mx-1 mt-1 flex space-x-0">
+            <div key={group._id} className="flex-shrink-0 mx-1 mt-1 flex">
               <SelectGroupButton
                 group={group}
                 activeGroupID={props.activeGroupID}
                 setSelectedGroupID={setSelectedGroupID}
               />
               {group._id === selectedGroupID && (
-                <div className="w-2/6 flex justify-items-center">
+                <div className="flex justify-items-center h-full ml-2 flex-grow w-full">
                   <RemoveGroupButton />
                 </div>
               )}

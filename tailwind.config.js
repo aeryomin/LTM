@@ -38,6 +38,15 @@ module.exports = {
       inset: {
         '1/2': '50%'
       },
+      minWidth: {
+        0: '0',
+        '1/4': '25%',
+        '1/2': '50%',
+        '3/4': '75%',
+        '2/6': '33.333333%',
+        '4/6': '66.666667%',
+        full: '100%'
+      },
       backgroundImage: {
         'custom-main-page': "url('../images/main-page.jpg')",
         'custom-groups-profile': "url('../images/groups-profile.jpg')",

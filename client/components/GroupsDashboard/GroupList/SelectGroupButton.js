@@ -12,7 +12,7 @@ const SelectGroupButton = (props) => {
   return (
     <button
       type="button"
-      className={` w-4/6 space-y-1 border rounded pl-2 text-left
+      className={` w-4/6 min-w-4/6 border rounded pl-2 text-left
         ${ui.groups.SelectButton.active.bgColor}
         ${ui.groups.SelectButton.active.fontSize}
         ${ui.groups.SelectButton.active.fontColor}

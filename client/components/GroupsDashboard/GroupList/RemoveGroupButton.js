@@ -1,5 +1,4 @@
 import React from 'react'
-// import { useDispatch } from 'react-redux'
 import usePortal from 'react-useportal'
 import { useTranslation } from 'react-i18next'
 import { setActiveGroupID, removeGroup } from '../../../redux/reducers/groups'
@@ -8,7 +7,6 @@ import ui from '../../UI/config.ui'
 
 const RemoveGroupButton = () => {
   const { t } = useTranslation()
-  // const dispatch = useDispatch()
   const { ref, openPortal, closePortal, isOpen, Portal } = usePortal({
     bindTo: document && document.getElementById('root')
   })
@@ -33,7 +31,7 @@ const RemoveGroupButton = () => {
       {isOpen && (
         <Portal>
           <WarningModal
-            content="Are you sure?"
+            content="warningContent"
             closePortal={closePortal}
             action1={removeGroup}
             action2={setActiveGroupID}

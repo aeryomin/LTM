@@ -157,5 +157,10 @@
       "registration": "Registration",
       "cancel": "Cancel"
     }
+  },
+  "warningModal": {
+    "warningContent": "Are you sure?",
+    "buttonYes": "Yes",
+    "buttonNo": "No"
   }
 }

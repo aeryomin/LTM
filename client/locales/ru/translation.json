@@ -157,5 +157,10 @@
       "registration": "Регистрация",
       "cancel": "Отмена"
     }
+  },
+  "warningModal": {
+    "warningContent": "Вы уверены?",
+    "buttonYes": "Да",
+    "buttonNo": "Нет"
   }
 }

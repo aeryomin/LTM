@@ -17,11 +17,11 @@ const GroupList = (props) => {
         ${ui.groups.fontColor}`}
     >
       <GroupListTitle />
-      <div className="mx-2 flex flex-col h-custom-20vh border rounded overflow-y-scroll">
+      <div className="mx-2 flex flex-col space-y-1 py-1 h-custom-20vh border rounded overflow-y-scroll">
         {props.groupList
           .filter((group) => group.creatorID === props.currentUser._id)
           .map((group) => (
-            <div key={group._id} className="flex-shrink-0 mx-1 mt-1 flex">
+            <div key={group._id} className="flex-shrink-0 mx-1 flex">
               <SelectGroupButton
                 group={group}
                 activeGroupID={props.activeGroupID}

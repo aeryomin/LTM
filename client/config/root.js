@@ -1,28 +1,45 @@
 /* eslint-disable no-console */
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react'
+import React, { Suspense } from 'react'
 import PropTypes from 'prop-types'
 import { Provider, useSelector } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 import { Switch, Route, Redirect, StaticRouter } from 'react-router-dom'
-
-// import firebase from 'firebase/app'
-// import 'firebase/messaging'
-// import { sendTokenToServer } from '../redux/reducers/auth'
 
 import store, { history } from '../redux'
 
 import Home from '../components/Home'
 import LoginForm from '../pages/login/LoginForm'
 import RegForm from '../pages/registration/RegForm'
-import MainPage from '../pages/main/MainPage'
-import Groups from '../pages/groups/Groups'
-import Profile from '../pages/profile/Profile'
+// import MainPage from '../pages/main/MainPage'
+// import Groups from '../pages/groups/Groups'
+// import Profile from '../pages/profile/Profile'
 import Offline from '../components/Offline'
 import NotFound from '../components/404'
 
 import Startup from './startup'
 import FirebaseInit from './firebase-init'
+
+const MainPage = React.lazy(() => import('../pages/main/MainPage'))
+const MainPageSuspensed = () => (
+  <Suspense fallback="Loading...">
+    <MainPage />
+  </Suspense>
+)
+
+const Groups = React.lazy(() => import('../pages/groups/Groups'))
+const GroupsSuspensed = () => (
+  <Suspense fallback="Loading...">
+    <Groups />
+  </Suspense>
+)
+
+const Profile = React.lazy(() => import('../pages/profile/Profile'))
+const ProfileSuspensed = () => (
+  <Suspense fallback="Loading...">
+    <Profile />
+  </Suspense>
+)
 
 const OnlyAnonymousRoute = ({ component: Component, ...rest }) => {
   const auth = useSelector((s) => s.auth)
@@ -89,10 +106,10 @@ const RootComponent = (props) => {
               <Route exact path="/" component={() => <Home />} />
               <Route exact path="/login" component={() => <LoginForm />} />
               <Route exact path="/reg" component={() => <RegForm />} />
-              <Route exact path="/groups" component={() => <Groups />} />
-              <Route exact path="/profile" component={() => <Profile />} />
+              <Route exact path="/groups" component={() => <GroupsSuspensed />} />
+              <Route exact path="/profile" component={() => <ProfileSuspensed />} />
               <Route exact path="/offline" component={() => <Offline />} />
-              <PrivateRoute exact path="/main-page" component={() => <MainPage />} />
+              <PrivateRoute exact path="/main-page" component={() => <MainPageSuspensed />} />
               <OnlyAnonymousRoute exact path="/login" component={() => <LoginForm />} />
               <Route component={() => <NotFound />} />
             </Switch>

@@ -7,7 +7,6 @@ const Html = ({ body }) => {
       <link rel="stylesheet" type="text/css" href="/css/main.css" />
       <link rel="manifest" href="manifest.json">
       <link rel="preconnect" href="https://fonts.gstatic.com">
-      <link href="https://fonts.googleapis.com/css2?family=Neucha&display=swap" rel="stylesheet">
       <meta name="viewport" content="width=device-width, initial-scale=1" />
     </head>
     <body>

@@ -67,7 +67,7 @@ const Sort = () => {
             {sortOpt.find((item) => item.option === sortOption).altName}
           </div>
         </button>
-        <button type="button" onClick={handleExchangeSort}>
+        <button type="button" onClick={handleExchangeSort} aria-label="Sort exchange icon">
           <SortExchangeIcon />
         </button>
       </div>

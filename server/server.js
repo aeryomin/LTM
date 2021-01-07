@@ -6,6 +6,7 @@ import bodyParser from 'body-parser'
 import sockjs from 'sockjs'
 import { renderToStaticNodeStream } from 'react-dom/server'
 import React from 'react'
+import compression from 'compression'
 
 import cookieParser from 'cookie-parser'
 import passport from 'passport'
@@ -31,6 +32,7 @@ const port = process.env.PORT || 8090
 const server = express()
 
 const middleware = [
+  compression(),
   cors(),
   passport.initialize(),
   express.static(path.resolve(__dirname, '../dist/assets')),

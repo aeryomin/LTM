@@ -11,6 +11,7 @@ const ButtonShowMenu = (props) => {
     <button
       type="button"
       className={`md:hidden ${ui.header.ButtonShowMenu.fontColor} ml-auto`}
+      aria-label="show menu"
       onClick={onClickHandler}
     >
       <svg

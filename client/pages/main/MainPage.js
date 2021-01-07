@@ -9,12 +9,6 @@ import FormNewTask from '../../components/FormNewTask/FormNewTask'
 
 const MainPage = () => {
   const { isFormShown } = useSelector((s) => s.form)
-  // const FormNewTask = React.lazy(() => import('../../components/FormNewTask/FormNewTask'))
-  // const FormNewTaskSuspansed = () => (
-  //   <Suspense fallback="Loading...">
-  //     <FormNewTask />
-  //   </Suspense>
-  // )
 
   return (
     <div className="relative w-screen h-screen bg-custom-main-page bg-cover flex flex-col divide-y md:max-w-screen-md md:mx-auto">

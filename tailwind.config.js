@@ -48,9 +48,9 @@ module.exports = {
         full: '100%'
       },
       backgroundImage: {
-        'custom-main-page': "url('../images/main-page.jpg')",
-        'custom-groups-profile': "url('../images/groups-profile.jpg')",
-        'custom-login': "url('../images/login.jpg')"
+        'custom-main-page': "url('../images/main-page.webp')",
+        'custom-groups-profile': "url('../images/groups-profile.webp')",
+        'custom-login': "url('../images/login.webp')"
       }
     }
   },

@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-console */
-import React, { useEffect } from 'react'
+import React, { useEffect, Suspense } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import { getAuthenticatedUsers } from '../../redux/reducers/users'
@@ -8,7 +8,7 @@ import { setCreator, setGroupID } from '../../redux/reducers/form'
 import DropdownSelectUser from './DropdownSelectUser'
 import InputTitle from './InputTitle'
 import InputContent from './InputContent'
-import InputExpirationData from './InputExpirationData'
+// import InputExpirationData from './InputExpirationData'
 import ButtonFormAction from './ButtonFormAction/ButtonFormAction'
 import ui from '../UI/config.ui'
 
@@ -22,6 +22,13 @@ const FormNewTask = () => {
 
   const usersIDInActiveGroup = groupList.find((group) => group._id === activeGroupID).usersID
   const usersFiltered = authenticatedUsers.filter((user) => usersIDInActiveGroup.includes(user._id))
+
+  const InputExpirationData = React.lazy(() => import('./InputExpirationData'))
+  const InputExpirationDataSuspended = () => (
+    <Suspense fallback="Loading...">
+      <InputExpirationData />
+    </Suspense>
+  )
 
   useEffect(() => {
     dispatch(getAuthenticatedUsers())
@@ -38,7 +45,8 @@ const FormNewTask = () => {
         <div>
           <InputTitle />
           <InputContent />
-          <InputExpirationData />
+          {/* <InputExpirationData /> */}
+          <InputExpirationDataSuspended />
         </div>
         <div className="flex justify-around">
           {isFormEdit ? (

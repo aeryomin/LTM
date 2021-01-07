@@ -2,9 +2,9 @@
 @tailwind  base;
 @tailwind  components;
 /* purgecss end ignore */
-// @font-face {
-//   font-family: 'Neucha';
-//   src: local('Neucha'), url('../fonts/Neucha-Regular.ttf') format('ttf');
-// }
+@font-face {
+  font-family: 'Neucha';
+  src: url('../fonts/Neucha-Regular.ttf');
+}
 
 @tailwind utilities;

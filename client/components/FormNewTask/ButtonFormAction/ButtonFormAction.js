@@ -2,11 +2,13 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import usePortal from 'react-useportal'
+import { useTranslation } from 'react-i18next'
 import { sendData, updateData, makeCancel } from './button-functions'
 import ui from '../../UI/config.ui'
 import Modal from '../../addons/modal'
 
 const ButtonFormAction = (props) => {
+  const { t } = useTranslation()
   const { newTaskData } = useSelector((s) => s.form)
   const { ref, openPortal, closePortal, isOpen, Portal } = usePortal({
     bindTo: document && document.getElementById('root')
@@ -74,7 +76,7 @@ const ButtonFormAction = (props) => {
       </button>
       {isOpen && (
         <Portal>
-          <Modal content="Form is not filled" closePortal={closePortal} />
+          <Modal messageIndicator={t('modal.FormIsNotFilled')} closePortal={closePortal} />
         </Portal>
       )}
     </div>

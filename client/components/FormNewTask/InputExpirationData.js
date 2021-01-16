@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import React, { useState, useRef } from 'react'
+// import React, { useState, useRef, Suspense } from 'react'
 import { useDispatch } from 'react-redux'
 import Calendar from 'react-calendar'
 import { useTranslation } from 'react-i18next'
@@ -13,6 +14,13 @@ const InputExpirationData = () => {
   const [date, setDate] = useState(new Date())
   const [isCalendarShown, setIsCalendarShown] = useState(false)
   const wrapperRef = useRef(null)
+
+  // const Calendar = React.lazy(() => import('react-calendar'))
+  // const CalendarSuspended = (props) => (
+  //   <Suspense fallback="Loading...">
+  //     <Calendar onChange={props.onChange} value={props.date} />
+  //   </Suspense>
+  // )
 
   const onClick = () => {
     setIsCalendarShown(!isCalendarShown)
@@ -40,6 +48,7 @@ const InputExpirationData = () => {
             className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 mx-auto p-2 text-gray-600 border border-gray-600 rounded bg-gray-900 bg-opacity-75"
           >
             <Calendar onChange={onChange} value={date} className="" />
+            {/* <CalendarSuspended onChange={onChange} value={date} className="" /> */}
             <div className="flex justify-around mt-2">
               <button
                 type="button"

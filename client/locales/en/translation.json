@@ -162,6 +162,7 @@
     "UserExists": "User exists",
     "GroupNameIsExist": "Group is exist",
     "GroupIsNotSelected": "Group is not selected",
+    "FormIsNotFilled": "Form is not filled",
     "buttonContent": "Close"
   },
   "warningModal": {

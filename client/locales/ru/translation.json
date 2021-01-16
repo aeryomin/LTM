@@ -162,6 +162,7 @@
     "UserExists": "Пользователь существует",
     "GroupNameIsExist": "Группа существует",
     "GroupIsNotSelected": "Группа не выбрана",
+    "FormIsNotFilled": "Форма не заполнена",
     "buttonContent": "Закрыть"
   },
   "warningModal": {

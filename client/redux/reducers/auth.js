@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import Cookies from 'universal-cookie'
 import store, { history } from '../index'
+import api from '../fetch/api'
 
 const UPDATE_USERNAME = 'UPDATE_USERNAME'
 const UPDATE_EMAIL = 'UPDATE_EMAIL'
@@ -52,16 +53,6 @@ export default (state = initialState, action) => {
 
     default:
       return state
-  }
-}
-
-export function getUser(userID) {
-  return (dispatch) => {
-    fetch(`/api/v1/user/${userID}`)
-      .then((r) => r.json())
-      .then((data) => {
-        dispatch({ type: GET_USER, user: data.user })
-      })
   }
 }
 
@@ -149,14 +140,13 @@ export function trySignIn() {
   }
 }
 
-export function updateUser(userID, field, data) {
-  return fetch(`/api/v1/auth/${userID}`, {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ field, data })
-  })
+export const getUser = (userId) => async (dispatch) => {
+  const user = await api.getUserFetch(userId)
+  dispatch({ type: GET_USER, user })
+}
+
+export const updateUser = async (userId, field, data) => {
+  await api.updateUserFetch(userId, field, data)
 }
 
 export function sendTokenToServer(userID, currentToken) {

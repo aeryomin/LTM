@@ -48,11 +48,6 @@ export async function updateField(req, res) {
         res.json({ status: 'ok', group })
         break
       }
-      // case 'remove group': {
-      //   const group = await Group.updateOne({ _id: req.params.id }, { $set: { isDeleted: true } })
-      //   res.json({ status: 'ok', group })
-      //   break
-      // }
       default:
         break
     }

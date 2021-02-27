@@ -18,6 +18,7 @@ import Html from '../client/html'
 import User from './model/User.model'
 import Task from './model/Task.model'
 import Group from './model/Group.model'
+import authRoutes from './routes/api/auth.routes'
 import taskRoutes from './routes/api/task.routes'
 import groupRoutes from './routes/api/group.routes'
 import userRoutes from './routes/api/user.routes'
@@ -45,75 +46,10 @@ passport.use('jwt', passportJWT.jwt)
 
 middleware.forEach((it) => server.use(it))
 
+server.use('/api/v1/auth', authRoutes)
 server.use('/api/v2/task', taskRoutes)
 server.use('/api/v2/group', groupRoutes)
 server.use('/api/v2/user', userRoutes)
-
-server.post('/api/v1/registration', async (req, res) => {
-  const user = await User.findOne({ username: req.body.username })
-
-  if (user === null) {
-    const newUser = new User({
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password,
-      fullname: req.body.username
-    })
-    newUser.save()
-    delete newUser.password
-    res.json({ status: 'user is added', newUser })
-  } else {
-    res.json({ status: 'user is exist, not added' })
-  }
-})
-
-server.post('/api/v1/auth', async (req, res) => {
-  try {
-    const user = await User.findAndValidateUser(req.body)
-    const payload = { uid: user.id }
-    const token = jwt.sign(payload, config.secret, { expiresIn: '48h' })
-    delete user.password
-    res.cookie('token', token, { maxAge: 1000 * 60 * 60 * 48 })
-    res.json({ status: 'ok', token, user })
-  } catch (err) {
-    res.json({ status: 'error', err })
-  }
-})
-
-server.get('/api/v1/auth', async (req, res) => {
-  try {
-    const jwtUser = jwt.verify(req.cookies.token, config.secret)
-    const user = await User.findById(jwtUser.uid)
-    const payload = { uid: user.id }
-    const token = jwt.sign(payload, config.secret, { expiresIn: '48h' })
-    delete user.password
-    res.cookie('token', token, { maxAge: 1000 * 60 * 60 * 48 })
-    res.json({ status: 'ok', token, user })
-  } catch (err) {
-    res.json({ status: 'error', err })
-  }
-})
-
-server.get('/api/v1/user/:id', async (req, res) => {
-  try {
-    const user = await User.findOne({ _id: req.params.id })
-    res.json({ status: 'ok', user })
-  } catch (err) {
-    res.json({ status: 'updata error', err })
-  }
-})
-
-server.patch('/api/v1/user/:id', async (req, res) => {
-  try {
-    const user = await User.updateOne(
-      { _id: req.params.id },
-      { $set: { [req.body.field]: req.body.data } }
-    )
-    res.json({ status: 'ok', user })
-  } catch (err) {
-    res.json({ status: 'updata error', err })
-  }
-})
 
 const [htmlStart, htmlEnd] = Html({
   body: 'separator',

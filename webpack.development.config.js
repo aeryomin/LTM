@@ -11,7 +11,7 @@ require('dotenv').config()
 
 const version = 'development'
 const config = {
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'eval-cheap-module-source-map',
 
   entry: ['./main.js'],
   resolve: {

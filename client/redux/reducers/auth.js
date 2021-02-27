@@ -97,7 +97,7 @@ export function registrateUser() {
     const { username, email, password, isEmailValid } = getState().auth
     if (isEmailValid) {
       // console.log('send reg data')
-      fetch('/api/v1/registration', {
+      fetch('/api/v1/auth/registration', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -150,7 +150,7 @@ export function trySignIn() {
 }
 
 export function updateUser(userID, field, data) {
-  return fetch(`/api/v1/user/${userID}`, {
+  return fetch(`/api/v1/auth/${userID}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'
